@@ -7,6 +7,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreBulkAction;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 
@@ -16,7 +17,11 @@ class PricingsTable
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('name')
+                    ->sortable() // data ditampilkan dengan urut
+                    ->searchable(), // data dapat dicari pada form search
+                TextColumn::make('price'),
+                TextColumn::make('duration'),
             ])
             ->filters([
                 TrashedFilter::make(),
