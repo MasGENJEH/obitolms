@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
@@ -30,7 +31,7 @@ class Course extends Model
     // ORM explanation
     public function benefits(): HasMany
     {
-        return $this->hasMany(CourseBenefits::class);
+        return $this->hasMany(CourseBenefit::class);
     }
 
     public function courseSections(): HasMany
@@ -55,7 +56,7 @@ class Course extends Model
 
     public function gentContentCountAttribute()
     {
-        return $this->courseSections->sum(function ($section){
+        return $this->courseSections->sum(function ($section) {
             return $section->sectionContents->count();
         });
     }

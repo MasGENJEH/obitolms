@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CourseMentor extends Model
 {
@@ -17,13 +17,13 @@ class CourseMentor extends Model
         'about',
     ];
 
-    public function courses(): BelongsTo
+    public function course(): BelongsTo
     {
-        return $this->hasMany(Course::class, 'course_id');
+        return $this->belongsTo(Course::class, 'course_id');
     }
 
-    public function users(): BelongsTo
+    public function mentor(): BelongsTo
     {
-        return $this->hasMany(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

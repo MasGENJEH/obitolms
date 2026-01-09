@@ -18,7 +18,7 @@ class UsersTable
     {
         return $table
             ->columns([
-                ImageColumn::make('photo'),
+                ImageColumn::make('photo')->circular(),
                 TextColumn::make('name')->searchable(),
                 TextColumn::make('roles.name'),
             ])
