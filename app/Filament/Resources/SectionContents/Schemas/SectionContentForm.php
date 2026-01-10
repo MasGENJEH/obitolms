@@ -34,7 +34,7 @@ class SectionContentForm
                     ->required()
                     ->maxLength(255),
 
-                RichEditor::make('content')
+                RichEditor::make('content') // Membuat form tulisan dengan banyak fitur seperti ms word
                     ->columnSpanFull()
                     ->required(),
             ]);

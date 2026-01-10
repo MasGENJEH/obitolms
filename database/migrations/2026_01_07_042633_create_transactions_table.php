@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -21,11 +20,11 @@ return new class extends Migration
             $table->unsignedInteger('sub_total_amount');
             $table->unsignedInteger('grand_total_amount');
             $table->unsignedInteger('total_tax_amount');
-            
+
             $table->boolean('is_paid');
             $table->string('payment_type');
             $table->string('proof')->nullable();
-            $table->date('started');
+            $table->date('started_at');
             $table->date('ended_at');
             $table->softDeletes();
             $table->timestamps();
