@@ -8,7 +8,6 @@ use App\Filament\Resources\Pricings\Pages\ListPricings;
 use App\Filament\Resources\Pricings\Schemas\PricingForm;
 use App\Filament\Resources\Pricings\Tables\PricingsTable;
 use App\Models\Pricing;
-use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -20,7 +19,9 @@ class PricingResource extends Resource
 {
     protected static ?string $model = Pricing::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|\BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Managements';
 
     public static function form(Schema $schema): Schema
     {
@@ -35,7 +36,6 @@ class PricingResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
         ];
     }
 

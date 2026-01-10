@@ -8,7 +8,6 @@ use App\Filament\Resources\CourseMentors\Pages\ListCourseMentors;
 use App\Filament\Resources\CourseMentors\Schemas\CourseMentorForm;
 use App\Filament\Resources\CourseMentors\Tables\CourseMentorsTable;
 use App\Models\CourseMentor;
-use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -20,7 +19,9 @@ class CourseMentorResource extends Resource
 {
     protected static ?string $model = CourseMentor::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|\BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Products';
 
     public static function form(Schema $schema): Schema
     {
@@ -35,7 +36,6 @@ class CourseMentorResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
         ];
     }
 

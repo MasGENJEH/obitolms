@@ -8,7 +8,6 @@ use App\Filament\Resources\SectionContents\Pages\ListSectionContents;
 use App\Filament\Resources\SectionContents\Schemas\SectionContentForm;
 use App\Filament\Resources\SectionContents\Tables\SectionContentsTable;
 use App\Models\SectionContent;
-use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
@@ -20,7 +19,9 @@ class SectionContentResource extends Resource
 {
     protected static ?string $model = SectionContent::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|\BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+
+    protected static string|\UnitEnum|null $navigationGroup = 'Products';
 
     public static function form(Schema $schema): Schema
     {
@@ -35,7 +36,6 @@ class SectionContentResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
         ];
     }
 

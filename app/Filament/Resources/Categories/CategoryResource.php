@@ -21,6 +21,8 @@ class CategoryResource extends Resource
 
     protected static string|\BackedEnum|null $navigationIcon = Heroicon::AcademicCap;
 
+    protected static string|\UnitEnum|null $navigationGroup = 'Managements';
+
     public static function form(Schema $schema): Schema
     {
         return CategoryForm::configure($schema);

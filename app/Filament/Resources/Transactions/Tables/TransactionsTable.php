@@ -2,11 +2,15 @@
 
 namespace App\Filament\Resources\Transactions\Tables;
 
+use App\Models\Transaction;
+use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreBulkAction;
+use Filament\Actions\ViewAction;
+use Filament\Notifications\Notification;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -19,7 +23,7 @@ class TransactionsTable
     {
         return $table
             ->columns([
-                ImageColumn::make('student.photo'),
+                ImageColumn::make('student.photo')->circular(),
                 TextColumn::make('student.name')->searchable()->sortable(),
                 TextColumn::make('booking_trx_id')->searchable(),
                 TextColumn::make('pricing.name'),
@@ -37,6 +41,19 @@ class TransactionsTable
             ])
             ->recordActions([
                 EditAction::make(),
+                ViewAction::make(),
+                Action::make('setuju')
+                ->label('Setujui')
+                ->action(function (Transaction $record) {
+                    $record->is_paid = true;
+                    $record->save();
+
+                    Notification::make() // Membuat notifikasi
+                    ->title('Order Disetujui')
+                    ->success()
+                    ->body('Pesanan berhasil disetujui')
+                    ->send();
+                }),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
