@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SectionContent extends Model
 {
@@ -16,7 +16,7 @@ class SectionContent extends Model
         'content',
     ];
 
-    public function transactions(): BelongsTo
+    public function courseSection(): BelongsTo
     {
         return $this->belongsTo(CourseSection::class, 'course_section_id');
     }

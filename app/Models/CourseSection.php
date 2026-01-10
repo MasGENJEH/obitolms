@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CourseSection extends Model
@@ -16,14 +17,13 @@ class CourseSection extends Model
         'position',
     ];
 
-    public function courses(): BelongsTo
+    public function course(): BelongsTo
     {
         return $this->belongsTo(Course::class, 'course_id');
     }
 
-    public function sectionContents(): HasMany
+    public function sectionContent(): HasMany
     {
         return $this->hasMany(SectionContent::class);
     }
-
 }
