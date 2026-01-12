@@ -2,8 +2,22 @@
 
 namespace App\Service;
 
+use App\Repositories\PricingRepository\PricingRepositoryInterface;
+use App\Repositories\TransactionRepository\TransactionRepositoryInterface;
+
 class TransactionService
 {
+    protected $pricingRepository;
+    protected $transactionRepository;
+
+    public function __construct(
+        TransactionRepositoryInterface $transactionRepository,
+        PricingRepositoryInterface $pricingRepository
+    ) {
+        $this->pricingRepository = $pricingRepository;
+        $this->transactionRepository = $transactionRepository;
+    }
+
     public function prepareCheckout(Pricing $pricing)
     {
         $user = Auth::user();
@@ -29,5 +43,33 @@ class TransactionService
             'started_at',
             'ended_at'
         );
+    }
+
+    public function getRecentPricing()
+    {
+        $pricingId = session()->get('pricing_id');
+
+        // return Pricing::find($pricingId);
+        return $this->pricingRepository->findById($pricingId);
+    }
+
+    public function getUserTransaction()
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return collect();
+        }
+
+        // JIKA MENGGUNAKAN REPOSITORY
+
+        return $this->transactionRepository->getUserTransactions($user->id);
+
+        // JIKA TIDAK MENGGUNAKAN REPOSITORY
+
+        // return Transaction::with('pricing')
+        //     ->where('user_id', $user->id)
+        //     ->orderBy('created_at', 'desc')
+        //     ->get();
     }
 }
