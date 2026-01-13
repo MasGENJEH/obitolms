@@ -19,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(PricingRepositoryInterface::class, PricingRepository::class);
         $this->app->singleton(TransactionRepositoryInterface::class, TransactionRepository::class);
+        $this->app->singleton(CourseRepositoryInterface::class, CourseRepository::class);
     }
 
     /**

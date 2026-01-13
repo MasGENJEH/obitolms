@@ -2,19 +2,20 @@
 
 namespace App\Repositories\CourseRepository;
 
-
 use App\Models\Course;
 use Illuminate\Support\Collection;
 
 class CourseRepository implements CourseRepositoryInterface
 {
-    // public function findById(int $id): ?Course
-    // {
-    //     return Course::find($id);
-    // }
+    public function searchByKeyword(string $keyword): Collection
+    {
+        return Course::where('name', 'like', "%{$keyword}")
+            ->orWhere('about', 'like', "%{$keyword}")
+            ->get();
+    }
 
-    // public function getAll(): Collection
-    // {
-    //     return Course::all();
-    // }
+    public function getAllWithCategory(): Collection
+    {
+        return Course::with('category')->latest()->get();
+    }
 }

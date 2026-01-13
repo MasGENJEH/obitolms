@@ -2,12 +2,14 @@
 
 namespace App\Repositories\CourseRepository;
 
+use Illuminate\Support\Collection;
+
 
 interface CourseRepositoryInterface
 {
     // Membuat kontrak yang akan digunakan pada Service
 
-    // public function findById(int $id): ?Course;
+    public function seacrchByKeyword(string $keyword): Collection;
 
-    // public function getAll(): Collection;
+    public function getAllCategory(): Collection;
 }

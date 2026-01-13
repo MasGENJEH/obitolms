@@ -7,6 +7,14 @@ use Illuminate\Support\Facades\Auth;
 
 class CourseService
 {
+    protected $courseRepository;
+
+    public function __construct(
+        CourseRepository $courseRepository
+    ) {
+        $this->courseRepository = $courseRepository;
+    }
+
     public function enrollUser(Course $course)
     {
         $user = Auth::user();
@@ -69,5 +77,19 @@ class CourseService
             'nextContent' => $nextContent,
             'isFinished' => !$nextContent,
         ];
+    }
+
+    public function searchCourses(string $keyword)
+    {
+        return $this->courseRepository->searchByKeyword($keyword);
+    }
+
+    public function getCoursesGroupByCategory()
+    {
+        $courses = $this->courseRepository->getAllCategory();
+
+        return $courses->groupBy(function ($course) {
+            return $course->category->name ?? 'Uncategorized';
+        });
     }
 }
