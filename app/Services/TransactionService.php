@@ -23,10 +23,10 @@ class TransactionService
     public function prepareCheckout(Pricing $pricing)
     {
         $user = Auth::user();
-        $alreadySubcribed = $pricing->isSubscibedByUser($user->id);
+        $alreadySubcribed = $pricing->isSubcribedByUser($user->id);
 
         $tax = 0.11;
-        $total_tax_amount = $pricing->price;
+        $total_tax_amount = $pricing->price * $tax;
         $sub_total_amount = $pricing->price;
         $grand_total_amount = $sub_total_amount + $total_tax_amount;
 
@@ -41,7 +41,7 @@ class TransactionService
             'sub_total_amount',
             'pricing',
             'user',
-            'alreadySubscribed',
+            'alreadySubcribed',
             'started_at',
             'ended_at'
         );

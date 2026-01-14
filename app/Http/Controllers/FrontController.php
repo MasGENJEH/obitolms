@@ -6,6 +6,7 @@ use App\Models\Pricing;
 use App\Services\PaymentService;
 use App\Services\PricingService;
 use App\Services\TransactionService;
+use Illuminate\Support\Facades\Auth;
 
 class FrontController extends Controller
 {
