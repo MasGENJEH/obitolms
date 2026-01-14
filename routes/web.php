@@ -17,8 +17,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::middleware('role:student')->group(function () {
-        Route::get('/dashboard/subsciptions/', [DashboardController::class, 'subsciptions'])->name('dashboard.subscriptions');
-        Route::get('/dashboard/subsciptions/{transaction}', [DashboardController::class, 'subsciptions'])->name('dashboard.subscriptions.details');
+        Route::get('/dashboard/subscriptions/', [DashboardController::class, 'subscriptions'])->name('dashboard.subscriptions');
+        Route::get('/dashboard/subscriptions/{transaction}', [DashboardController::class, 'subscriptions'])->name('dashboard.subscriptions.details');
 
         Route::get('/dashboard/courses/', [CourseController::class, 'index'])->name('dashboard');
         Route::get('/dashboard/courses/{course:slug}', [CourseController::class, 'details'])->name('dashboard.course.details');

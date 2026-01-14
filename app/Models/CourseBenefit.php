@@ -15,4 +15,8 @@ class CourseBenefit extends Model
         'category_id',
     ];
 
+    public function course(): BelongsTo
+    {
+        return $this->belongsTo(Course::class);
+    }
 }

@@ -1,8 +1,8 @@
 @extends('front.layouts.app')
+@section('title', 'Obito | Checkout')
 @section('content')
-    @php $user = Auth::user(); @endphp
 
-        <x-nav-user/>
+        <x-navigation-auth/>
         <div id="path" class="flex w-full bg-white border-b border-obito-grey py-[14px]">
             <div class="flex items-center w-full max-w-[1280px] px-[75px] mx-auto gap-5">
                     <a href="#" class="last-of-type:font-semibold">Home</a>
@@ -132,5 +132,7 @@
             </div>
         </main>
 
-        <script src="js/dropdown-navbar.js"></script>
 @endsection
+@push('after-scripts')
+    <script src="{{ asset('js/dropdown-navbar.js') }}"></script>
+@endpush

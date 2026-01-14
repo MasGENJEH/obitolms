@@ -1,4 +1,6 @@
 @extends('front.layouts.app')
+@section('title', 'Obito | Pricing')
+
 @section('content')
         <x-nav-guest/>
         
