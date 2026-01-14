@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pricing;
-use App\Service\PaymentService;
-use App\Service\TransactionService;
+use App\Services\PaymentService;
 use App\Services\PricingService;
+use App\Services\TransactionService;
 
 class FrontController extends Controller
 {

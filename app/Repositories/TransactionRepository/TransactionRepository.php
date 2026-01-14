@@ -5,7 +5,7 @@ namespace App\Repositories\TransactionRepository;
 use App\Models\Transaction;
 use Illuminate\Support\Collection;
 
-class TransactionRepository implements TransactionRepositoryInterfacea
+class TransactionRepository implements TransactionRepositoryInterface
 {
     public function findByBookingId(string $bookingId): Transaction
     {

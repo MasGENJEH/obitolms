@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Service;
+namespace App\Services;
 
 use App\Helpers\TransactionHelper;
 use App\Models\Pricing;
 use App\Repositories\PricingRepository\PricingRepository;
 use App\Repositories\TransactionRepository\TransactionRepository;
-use App\Services\MidtransService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 

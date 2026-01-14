@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Course;
 use Illuminate\Support\Facades\Auth;
+use App\Repositories\CourseRepository\CourseRepository;
 
 class CourseService
 {

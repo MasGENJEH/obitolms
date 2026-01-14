@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Repositories\PricingRepository\PricingRepositoryInterface;
+
 class PricingService
 {
     protected $pricingRepository;

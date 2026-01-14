@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Service\TransactionService;
+use App\Models\Transaction;
+use App\Services\TransactionService;
 
 class DashboardController extends Controller
 {

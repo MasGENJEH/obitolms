@@ -19,7 +19,7 @@ class CourseController extends Controller
     {
         $coursesByCategory = $this->courseService->getCoursesGroupByCategory();
 
-        return view('course.index', compact('coursesByCategory'));
+        return view('courses.index', compact('coursesByCategory'));
     }
 
     public function details(Course $course)
@@ -38,7 +38,7 @@ class CourseController extends Controller
         $studentName = $this->courseService->enrollUser($course);
         $firstSectionAndContent = $this->courseService->getFirstSectionAndContent($course);
 
-        return view('course.success_joined', array_merge(
+        return view('courses.success_joined', array_merge(
             compact('course', 'studentName'),
             $firstSectionAndContent
         ));
@@ -48,7 +48,7 @@ class CourseController extends Controller
     {
         $learningData = $this->courseService->getLearningData($course, $contentSectionId, $sectionContentId);
 
-        return view('course.learning', $learningData);
+        return view('courses.learning', $learningData);
     }
 
     public function learning_finished(Course $course)

@@ -6,7 +6,7 @@ use Midtrans\Config;
 use Midtrans\Notification;
 use Midtrans\Snap;
 
-class MidtransServie
+class MidtransService
 {
     public function __construct()
     {

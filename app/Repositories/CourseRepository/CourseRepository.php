@@ -4,6 +4,7 @@ namespace App\Repositories\CourseRepository;
 
 use App\Models\Course;
 use Illuminate\Support\Collection;
+use App\Repositories\CourseRepository\CourseRepositoryInterface;
 
 class CourseRepository implements CourseRepositoryInterface
 {
@@ -14,7 +15,7 @@ class CourseRepository implements CourseRepositoryInterface
             ->get();
     }
 
-    public function getAllWithCategory(): Collection
+    public function getAllCategory(): Collection
     {
         return Course::with('category')->latest()->get();
     }

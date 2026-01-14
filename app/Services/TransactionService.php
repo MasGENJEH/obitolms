@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Service;
+namespace App\Services;
 
+use App\Models\Pricing;
 use App\Repositories\PricingRepository\PricingRepositoryInterface;
 use App\Repositories\TransactionRepository\TransactionRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionService
 {
