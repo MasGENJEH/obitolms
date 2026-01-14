@@ -8,9 +8,9 @@ class TransactionHelper
 {
     public static function generateUniqueTrxId(): string
     {
-        $prefix = 'SKUY';
+        $prefix = 'OBITOBWA';
         do {
-            $randomString = $prefix.mt_rand(10000, 99999);
+            $randomString = $prefix.mt_rand(1000, 9999);
         } while (Transaction::where('booking_trx_id', $randomString)->exists()); // kondisi membuat kode terus tergenerate ketika kode sudah ada
 
         return $randomString;

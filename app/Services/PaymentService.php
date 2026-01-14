@@ -4,8 +4,8 @@ namespace App\Services;
 
 use App\Helpers\TransactionHelper;
 use App\Models\Pricing;
-use App\Repositories\PricingRepository\PricingRepository;
-use App\Repositories\TransactionRepository\TransactionRepository;
+use App\Repositories\PricingRepository\PricingRepositoryInterface;
+use App\Repositories\TransactionRepository\TransactionRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -17,8 +17,8 @@ class PaymentService
 
     public function __construct(
         MidtransService $midtransService,
-        PricingRepository $pricingRepository,
-        TransactionRepository $transactionRepository
+        PricingRepositoryInterface $pricingRepository,
+        TransactionRepositoryInterface $transactionRepository
     ) {
         $this->midtransService = $midtransService;
         $this->pricingRepository = $pricingRepository;
@@ -36,7 +36,7 @@ class PaymentService
         $grandTotal = $pricing->price + $totalTax;
 
         $params = [
-            'transaction_detail' => [
+            'transaction_details' => [
                 'order_id' => TransactionHelper::generateUniqueTrxId(),
                 'gross_amount' => (int) $grandTotal,
             ],

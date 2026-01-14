@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\Log;
 use Midtrans\Config;
 use Midtrans\Notification;
 use Midtrans\Snap;

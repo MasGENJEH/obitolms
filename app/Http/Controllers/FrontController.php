@@ -6,7 +6,9 @@ use App\Models\Pricing;
 use App\Services\PaymentService;
 use App\Services\PricingService;
 use App\Services\TransactionService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class FrontController extends Controller
 {
@@ -50,7 +52,7 @@ class FrontController extends Controller
             $pricingId = session()->get('pricing_id');
 
             if (!$pricingId) {
-                return response()->join(['error' => 'No pricing data found in the session.'], 400);
+                return response()->json(['error' => 'No pricing data found in the session.'], 400);
             }
 
             $snapToken = $this->paymentService->createPayment($pricingId);
@@ -60,9 +62,31 @@ class FrontController extends Controller
             }
 
             return response()->json(['snap_token' => $snapToken], 200);
-        } catch (\Exeption $e) {
+        } catch (\Exception $e) {
             return response()->json(['error' => 'Payment failed: '.$e->getMessage()], 500);
         }
+
+        // try {
+        //     // Retrieve the pricing ID from the session
+        //     $pricingId = session()->get('pricing_id');
+
+        //     if (!$pricingId) {
+        //         return response()->json(['error' => 'No pricing data found in the session.'], 400);
+        //     }
+
+        //     // Call the PaymentService to generate the Snap token
+        //     $snapToken = $this->paymentService->createPayment($pricingId);
+
+        //     if (!$snapToken) {
+        //         return response()->json(['error' => 'Failed to create Midtrans transaction.'], 500);
+        //     }
+
+        //     // Return the Snap token to the frontend
+        //     return response()->json(['snap_token' => $snapToken], 200);
+        // } catch (\Exception $e) {
+        //     // Handle any exceptions that occur during transaction creation
+        //     return response()->json(['error' => 'Payment failed: ' . $e->getMessage()], 500);
+        // }
     }
 
     public function paymentMidtransNotification(Request $request)
