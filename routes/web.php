@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FrontController;
 use App\Http\Controllers\CourseController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FrontController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontController::class, 'index'])->name('front.index');
 Route::get('/pricing', [FrontController::class, 'pricing'])->name('front.pricing');
@@ -18,7 +18,7 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('role:student')->group(function () {
         Route::get('/dashboard/subscriptions/', [DashboardController::class, 'subscriptions'])->name('dashboard.subscriptions');
-        Route::get('/dashboard/subscriptions/{transaction}', [DashboardController::class, 'subscriptions'])->name('dashboard.subscriptions.details');
+        Route::get('/dashboard/subscriptions/{transaction}', [DashboardController::class, 'subscriptions_details'])->name('dashboard.subscriptions.details');
 
         Route::get('/dashboard/courses/', [CourseController::class, 'index'])->name('dashboard');
         Route::get('/dashboard/courses/{course:slug}', [CourseController::class, 'details'])->name('dashboard.course.details');

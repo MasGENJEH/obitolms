@@ -55,7 +55,7 @@ class TransactionService
         return $this->pricingRepository->findById($pricingId);
     }
 
-    public function getUserTransaction()
+    public function getUserTransactions()
     {
         $user = Auth::user();
 

@@ -17,11 +17,11 @@ class TransactionRepository implements TransactionRepositoryInterface
         return Transaction::create($data);
     }
 
-    public function getUserTransaction(int $userId): Collection
+    public function getUserTransactions(int $userId): Collection
     {
         return Transaction::with('pricing')
             ->where('user_id', $userId)
-            ->orderBy('created_id', 'desc')
+            ->orderBy('created_at', 'desc')
             ->get();
     }
 }

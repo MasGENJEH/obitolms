@@ -36,7 +36,7 @@ class Transaction extends Model
 
     public function student(): BelongsTo
     {
-        return $this->belongsTo(user::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function isActive(): bool

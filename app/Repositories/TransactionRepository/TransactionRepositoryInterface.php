@@ -11,5 +11,5 @@ interface TransactionRepositoryInterface
 
     public function create(array $data): Transaction;
 
-    public function getUserTransaction(int $userId): Collection;
+    public function getUserTransactions(int $userId): Collection;
 }

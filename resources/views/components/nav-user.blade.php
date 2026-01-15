@@ -4,7 +4,7 @@
     @php $user = Auth::user(); @endphp
             <div class="flex w-[1280px] px-[75px] py-5 items-center justify-between mx-auto">
                 <div class="flex items-center gap-[30px]">
-                    <a href="index.html" class="flex shrink-0">
+                    <a href="{{ route('front.index') }}" class="flex shrink-0">
                         <img src="{{ asset('assets/images/logos/logo.svg') }}" class="flex shrink-0" alt="logo">
                     </a>
                 </div>
@@ -12,7 +12,7 @@
                     <a href="#" class="flex shrink-0">
                         <img src="{{ asset('assets/images/icons/device-message.svg') }}" class="flex shrink-0" alt="icon">
                     </a>
-                    <a href="catalog-v2.html" class="flex shrink-0">
+                    <a href="#" class="flex shrink-0">
                         <img src="{{ asset('assets/images/icons/category.svg') }}" class="flex shrink-0" alt="icon">
                     </a>
                     <a href="#" class="flex shrink-0">
