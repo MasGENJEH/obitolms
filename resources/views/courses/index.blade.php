@@ -2,8 +2,8 @@
 @section('title', 'Obito | Course')
 
 @section('content')
-    <x-nav-user />
-    <x-nav-user2 />
+    <x-nav-auth />
+    <x-bottom-nav />
 
     <main class="flex flex-col gap-10 pb-10 mt-[30px]">
         <section id="roadmap" class="flex flex-col w-full max-w-[1280px] px-[75px] gap-4 mx-auto">
@@ -93,7 +93,7 @@
                         class="{{ $loop->first ? '' : 'hidden' }} tab-content grid grid-cols-4 gap-5">
 
                         @forelse ($courses as $course)
-                            <x-course-card :course="$course"/>
+                            <x-course-card :course="$course" />
                         @empty
                             <p>Belum Ada Kelas pada kategori ini</p>
                         @endforelse

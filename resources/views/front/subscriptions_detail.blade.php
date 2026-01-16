@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <x-nav-user />
+    <x-nav-auth />
     <div id="path" class="flex w-full bg-white border-b border-obito-grey py-[14px]">
         <div class="flex items-center w-full max-w-[1280px] px-[75px] mx-auto gap-5">
             <a href="{{ route('dashboard') }}" class="last-of-type:font-semibold">Dashboard</a>
@@ -40,45 +40,55 @@
                     <div class="flex flex-col gap-[12px]">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-2">
-                                <img src="{{ asset('assets/images/icons/note.svg') }}" alt="icon" class="size-5 shrink-0" />
+                                <img src="{{ asset('assets/images/icons/note.svg') }}" alt="icon"
+                                    class="size-5 shrink-0" />
                                 <p>Subscription Package</p>
                             </div>
-                            <strong class="font-semibold">Rp {{ number_format($transaction->pricing->price), 0 ,'', '.'}}</strong>
+                            <strong class="font-semibold">Rp
+                                {{ number_format($transaction->pricing->price), 0, '', '.' }}</strong>
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-2">
-                                <img src="{{ asset('assets/images/icons/note.svg') }}" alt="icon" class="size-5 shrink-0" />
+                                <img src="{{ asset('assets/images/icons/note.svg') }}" alt="icon"
+                                    class="size-5 shrink-0" />
                                 <p>Access Duration</p>
                             </div>
                             <strong class="font-semibold">{{ $transaction->pricing->duration }} Months</strong>
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-2">
-                                <img src="{{ asset('assets/images/icons/note.svg') }}" alt="icon" class="size-5 shrink-0" />
+                                <img src="{{ asset('assets/images/icons/note.svg') }}" alt="icon"
+                                    class="size-5 shrink-0" />
                                 <p>Started At</p>
                             </div>
-                            <strong class="font-semibold">{{ $transaction->started_at->translatedFormat('d F Y') }}</strong>
+                            <strong
+                                class="font-semibold">{{ $transaction->started_at->translatedFormat('d F Y') }}</strong>
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-2">
-                                <img src="{{ asset('assets/images/icons/note.svg') }}" alt="icon" class="size-5 shrink-0" />
+                                <img src="{{ asset('assets/images/icons/note.svg') }}" alt="icon"
+                                    class="size-5 shrink-0" />
                                 <p>Ended At</p>
                             </div>
                             <strong class="font-semibold">{{ $transaction->ended_at->translatedFormat('d F Y') }}</strong>
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-2">
-                                <img src="{{ asset('assets/images/icons/note.svg') }}" alt="icon" class="size-5 shrink-0" />
+                                <img src="{{ asset('assets/images/icons/note.svg') }}" alt="icon"
+                                    class="size-5 shrink-0" />
                                 <p>PPN 11%</p>
                             </div>
-                            <strong class="font-semibold">Rp {{ number_format($transaction->total_tax_amount), 0, '', '.' }}</strong>
+                            <strong class="font-semibold">Rp
+                                {{ number_format($transaction->total_tax_amount), 0, '', '.' }}</strong>
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-2">
-                                <img src="{{ asset('assets/images/icons/note.svg') }}" alt="icon" class="size-5 shrink-0" />
+                                <img src="{{ asset('assets/images/icons/note.svg') }}" alt="icon"
+                                    class="size-5 shrink-0" />
                                 <p class="whitespace-nowrap">Grand Total</p>
                             </div>
-                            <strong class="font-bold text-obito-green text-[22px] leading-[33px]"> Rp {{ number_format($transaction->grand_total_amount), 0, '', '.' }} </strong>
+                            <strong class="font-bold text-obito-green text-[22px] leading-[33px]"> Rp
+                                {{ number_format($transaction->grand_total_amount), 0, '', '.' }} </strong>
                         </div>
                     </div>
                 </section>
@@ -86,11 +96,13 @@
                     <h2 class="font-semibold">Access Given to</h2>
                     <div class="profile flex items-center gap-[14px] rounded-[20px] border border-obito-grey p-[14px]">
                         <div class="flex justify-center items-center overflow-hidden size-[50px] rounded-full">
-                            <img src="{{ Storage::url($transaction->student->photo) }}" alt="image" class="size-full object-cover" />
+                            <img src="{{ Storage::url($transaction->student->photo) }}" alt="image"
+                                class="size-full object-cover" />
                         </div>
                         <div class="desc flex flex-col gap-[3px]">
                             <h3 class="font-semibold">{{ $transaction->student->name }}</h3>
-                            <p class="text-sm leading-[21px] text-obito-text-secondary">{{ $transaction->student->occupation }}</p>
+                            <p class="text-sm leading-[21px] text-obito-text-secondary">
+                                {{ $transaction->student->occupation }}</p>
                         </div>
                     </div>
                 </section>
@@ -98,19 +110,22 @@
             <div id="benefits" class="bg-[#F8FAF9] rounded-[20px] overflow-hidden shrink-0 w-[420px]">
                 <section id="thumbnails"
                     class="relative flex justify-center h-[250px] items-center overflow-hidden rounded-t-[14px] w-full">
-                    <img src="{{ asset('assets/images/thumbnails/checkout.png') }}" alt="image" class="size-full object-cover" />
+                    <img src="{{ asset('assets/images/thumbnails/checkout.png') }}" alt="image"
+                        class="size-full object-cover" />
                 </section>
                 <section id="points" class="pt-[61px] relative flex flex-col gap-4 px-5 pb-5">
                     <div
                         class="card absolute -top-[47px] left-[30px] right-[30px] flex items-center p-4 gap-[14px] border border-obito-grey rounded-[20px] bg-white shadow-[0px_10px_30px_0px_#B8B8B840]">
-                        <img src="{{ asset('assets/images/icons/cup-green-fill.svg') }}" alt="icon" class="size-[50px] shrink-0" />
+                        <img src="{{ asset('assets/images/icons/cup-green-fill.svg') }}" alt="icon"
+                            class="size-[50px] shrink-0" />
                         <div>
                             <h3 class="font-bold text-[18px] leading-[27px]">{{ $transaction->pricing->name }}</h3>
                             <p class="text-obito-text-secondary">{{ $transaction->pricing->duration }} months duration</p>
                         </div>
                     </div>
                     <div class="flex items-center gap-2">
-                        <img src="{{ asset('assets/images/icons/tick-circle-green-fill.svg') }}" alt="icon" class="size-6 shrink-0" />
+                        <img src="{{ asset('assets/images/icons/tick-circle-green-fill.svg') }}" alt="icon"
+                            class="size-6 shrink-0" />
                         <p class="font-semibold">Access 1500+ Online Courses</p>
                     </div>
                     <div class="flex items-center gap-2">
