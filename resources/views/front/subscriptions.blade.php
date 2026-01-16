@@ -102,7 +102,6 @@
 
 
             </div>
-            {{ $transactions->links() }}
         </section>
     </main>
 
