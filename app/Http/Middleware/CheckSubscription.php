@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckSubcription
+class CheckSubscription
 {
     /**
      * Handle an incoming request.
@@ -18,8 +18,8 @@ class CheckSubcription
     {
         $user = Auth::user();
 
-        if (!$user || !$user->hasActiveSubcription()) {
-            return redirect()->route('front.pricing')->with('error', 'You need an active subcription to proceed');
+        if (!$user || !$user->hasActiveSubscription()) {
+            return redirect()->route('front.pricing')->with('error', 'You need an active subscription to proceed');
         }
 
         return $next($request);

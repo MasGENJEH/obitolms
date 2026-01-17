@@ -44,9 +44,9 @@ class CourseController extends Controller
         ));
     }
 
-    public function learning(Course $course)
+    public function learning(Course $course, $courseSection, $sectionContent)
     {
-        $learningData = $this->courseService->getLearningData($course, $contentSectionId, $sectionContentId);
+        $learningData = $this->courseService->getLearningData($course, $courseSection, $sectionContent);
 
         return view('courses.learning', $learningData);
     }
