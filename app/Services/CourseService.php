@@ -3,8 +3,8 @@
 namespace App\Services;
 
 use App\Models\Course;
-use Illuminate\Support\Facades\Auth;
 use App\Repositories\CourseRepository\CourseRepository;
+use Illuminate\Support\Facades\Auth;
 
 class CourseService
 {
@@ -20,7 +20,7 @@ class CourseService
     {
         $user = Auth::user();
 
-        if (!$course->courseStudents()->where('user_id', $user->id)->exists()) {
+        if (! $course->courseStudents()->where('user_id', $user->id)->exists()) {
             $course->courseStudents()->create([
                 'user_id' => $user->id,
                 'is_active' => true,
@@ -54,16 +54,16 @@ class CourseService
         // Untuk Mengecek konten berikutnya
         if ($currentContent) {
             $nextContent = $currentSection->sectionContents
-            ->where('id', '>', $currentContent->id)
-            ->sortBy('id')
-            ->first();
+                ->where('id', '>', $currentContent->id)
+                ->sortBy('id')
+                ->first();
         }
         // Untuk Mengecek section berikutnya
-        if (!$nextContent && $currentSection) {
+        if (! $nextContent && $currentSection) {
             $nextSection = $course->courseSections
-            ->where('id', '>', $currentSection->id)
-            ->sortBy('id')
-            ->first();
+                ->where('id', '>', $currentSection->id)
+                ->sortBy('id')
+                ->first();
 
             // Mengambil data pertama jika section telah berganti
             if ($nextSection) {
@@ -76,7 +76,7 @@ class CourseService
             'currentSection' => $currentSection,
             'currentContent' => $currentContent,
             'nextContent' => $nextContent,
-            'isFinished' => !$nextContent,
+            'isFinished' => ! $nextContent,
         ];
     }
 

@@ -26,11 +26,11 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
             keyframes: {
-            slide: {
-            "0%": { transform: "translateX(0%)" },
-            "100%": { transform: "translateX(-100%)" },
+                slide: {
+                    "0%": { transform: "translateX(0%)" },
+                    "100%": { transform: "translateX(-100%)" },
                 },
-            }  
+            }
         },
     },
 

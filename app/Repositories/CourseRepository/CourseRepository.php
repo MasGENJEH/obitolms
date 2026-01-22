@@ -4,15 +4,15 @@ namespace App\Repositories\CourseRepository;
 
 use App\Models\Course;
 use Illuminate\Support\Collection;
-use App\Repositories\CourseRepository\CourseRepositoryInterface;
 
 class CourseRepository implements CourseRepositoryInterface
 {
     public function searchByKeyword(string $keyword): Collection
     {
-        return Course::where('name', 'like', "%{$keyword}")
-            ->orWhere('about', 'like', "%{$keyword}")
+        return Course::where('name', 'LIKE', "%{$keyword}%")
+            ->orWhere('about', 'LIKE', "%{$keyword}%")
             ->get();
+
     }
 
     public function getAllCategory(): Collection

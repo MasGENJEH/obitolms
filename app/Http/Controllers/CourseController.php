@@ -59,10 +59,10 @@ class CourseController extends Controller
     public function search_courses(Request $request)
     {
         $request->validate([
-            'search' => 'requires|string',
+            'search' => 'required|string',
         ]);
         $keyword = $request->search;
-        $courses = $this->courseService->getCoursesGroupByCategory($keyword);
+        $courses = $this->courseService->searchCourses($keyword);
 
         return view('courses.search', compact('courses', 'keyword'));
     }

@@ -108,5 +108,5 @@
 @endsection
 
 @push('after-scripts')
-    <script src="js/dropdown-navbar.js"></script>
+    <script src="{{ asset('js/dropdown-navbar.js') }}"></script>
 @endpush
